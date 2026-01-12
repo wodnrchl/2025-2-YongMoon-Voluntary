@@ -1,7 +1,7 @@
 import numpy as np
 
 class PongEnv:
-    def __init__(self, render_mode=None):
+    def __init__(self, render_mode=None, target_fps = 60):
         """
         환경 초기화
         
@@ -28,6 +28,7 @@ class PongEnv:
         
         # 렌더링 설정
         self.render_mode = render_mode
+        self.target_fps = target_fps
 
         # 화면 렌더링 변수
         self.screen = None
@@ -200,7 +201,7 @@ class PongEnv:
         pygame.display.flip()
         
         if self.clock:
-            self.clock.tick(60)
+            self.clock.tick(self.target_fps)
     
     def render_game_over(self):
         """게임 오버 화면 렌더링"""
